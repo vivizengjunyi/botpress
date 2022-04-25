@@ -80,7 +80,7 @@ body {
   bottom: 0;
   right: 0;
   height: 100%;
-  border-left: 1px solid #ccc;
+  border: 1px solid #ccc;
   -webkit-box-orient: vertical;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -1094,4 +1094,10 @@ body {
 
 .bpw-rtl .bpw-keyboard-quick_reply-dropdown {
   direction: rtl;
+}
+.bpw-header-icon-close {
+  display: none;
+}
+.bpw-powered {
+  display: none;
 }

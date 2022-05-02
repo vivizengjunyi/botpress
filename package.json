@@ -150,8 +150,6 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint --config ./config/commitlint.config.js -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged --config ./config/lint-staged.commit.config.js --no-stash"
     }
   },
   "workspaces": [

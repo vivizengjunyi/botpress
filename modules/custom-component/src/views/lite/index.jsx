@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -34,8 +35,21 @@ export class UpperCasedText extends React.Component {
   }
 }
 
-export const CustomDatePicker = () => {
+export const CustomDatePicker = ({onSendData, text}) => {
   const [startDate, setStartDate] = React.useState(new Date());
-  return <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+  const sendData = () => {
+    onSendData({ type: 'text', text: moment(startDate).format('YYYY/MM/DD')})
+  }
+  return (
+  <>
+  {text}
+  <DatePicker 
+    selected={startDate} 
+    dateFormat="yyyy/MM/dd"
+    onChange={(date) => {
+      setStartDate(date)
+  }} />
+  <button onClick={sendData}>Save</button>
+  </>)
 }
 

@@ -94,6 +94,11 @@ class RootStore {
   }
 
   @computed
+  get botId(): string {
+    return this.config?.botId
+  }
+
+  @computed
   get isEmulator(): boolean {
     return this.config?.isEmulator || false
   }

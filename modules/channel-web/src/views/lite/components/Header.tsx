@@ -146,6 +146,51 @@ class Header extends React.Component<HeaderProps> {
       </button>
     )
   }
+  hanldeChangeLanguage(newLang) {
+    const botIdArr = this.props.botId.split('-')
+    const language = botIdArr[botIdArr.length - 1]
+    let newBotId
+    // if language is not set, append it to the botId
+    if (!this.languages[language]) {
+      newBotId = this.props.botId + (newLang === 'en' ? '' : '-' + newLang)
+    } else {
+      newBotId = this.props.botId.replace('-' + language, newLang === 'en' ? '' : '-' + newLang)
+    }
+    window.parent?.postMessage({ type: 'changeLanguage', value: newBotId }, '*')
+  }
+  languages = {
+    en: 'English',
+    fr: 'French'
+  }
+  renderChangeLanguage() {
+    const match = this.props.botId.match(/-([^-]+?)$/)
+    let language = match ? match[1] : 'en'
+    if (!this.languages[language]) {
+      language = 'en'
+    }
+    return (
+      <select
+        className={'bpw-change-language'}
+        onChange={(e) => {
+          this.hanldeChangeLanguage(e.target.value)
+        }}
+      >
+        {
+          Object.keys(this.languages).map(lang => {
+            return (
+              <option
+                key={lang}
+                value={lang}
+                selected={language === lang}
+              >
+                {this.languages[lang]}
+              </option>
+            )
+          })
+        }
+      </select>
+    )
+  }
 
   renderConvoButton() {
     return (
@@ -294,6 +339,7 @@ class Header extends React.Component<HeaderProps> {
             {this.renderTitle()}
           </div>
         </div>
+        {this.renderChangeLanguage()}
         {!!this.props.customButtons.length && this.renderCustomButtons()}
         {this.props.showDeleteConversationButton && this.renderDeleteConversationButton()}
         {this.props.showResetButton && this.renderResetButton()}
@@ -329,6 +375,8 @@ export default inject(({ store }: { store: RootStore }) => ({
   resetSession: store.resetSession,
   downloadConversation: store.downloadConversation,
   botName: store.botName,
+  botId: store.botId,
+  config: store.config,
   botAvatarUrl: store.botAvatarUrl,
   hasBotInfoDescription: store.hasBotInfoDescription,
   isEmulator: store.isEmulator,
@@ -345,6 +393,7 @@ type HeaderProps = Pick<
   | 'focusedArea'
   | 'isConversationsDisplayed'
   | 'botName'
+  | 'botId'
   | 'isEmulator'
   | 'hasUnreadMessages'
   | 'unreadCount'

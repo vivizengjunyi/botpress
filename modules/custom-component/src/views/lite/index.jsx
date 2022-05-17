@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment';
 import DatePicker from "react-datepicker";
+// import * as Keyboard from '../../../../channel-web/src/views/lite/components/Keyboard'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -31,25 +32,37 @@ export class InjectedBelow extends React.Component {
 
 export class UpperCasedText extends React.Component {
   render() {
-    return <div style={{color:"blue"}}>{this.props.text && this.props.text.toUpperCase()}</div>
+    return <div style={{ color: "blue" }}>{this.props.text && this.props.text.toUpperCase()}</div>
   }
 }
 
-export const CustomDatePicker = ({onSendData, text}) => {
+export const CustomDatePicker = (props) => {
+  const Keyboard = props.keyboard;
+  const shouldDisplay = props.isLastGroup && props.isLastOfGroup
   const [startDate, setStartDate] = React.useState(new Date());
   const sendData = () => {
-    onSendData({ type: 'text', text: moment(startDate).format('YYYY/MM/DD')})
+    props.onSendData({ type: 'text', text: moment(startDate).format('YYYY/MM/DD') })
+  }
+  console.log('Keyboard.Default.isReady():' + Keyboard.Default.isReady())
+  if (props.displayInKeyboard && Keyboard.Default.isReady()) {
+    return (
+      <Keyboard.Prepend keyboard={<>
+        <DatePicker
+          selected={startDate}
+          dateFormat="yyyy/MM/dd"
+          onChange={(date) => {
+            setStartDate(date)
+          }} />
+        <button onClick={sendData}>Save</button>
+      </>} visible={shouldDisplay}>
+        {props.text}
+      </Keyboard.Prepend>
+    )
   }
   return (
-  <>
-  {text}
-  <DatePicker 
-    selected={startDate} 
-    dateFormat="yyyy/MM/dd"
-    onChange={(date) => {
-      setStartDate(date)
-  }} />
-  <button onClick={sendData}>Save</button>
-  </>)
+    <>
+      {props.text}
+    </>
+  )
 }
 

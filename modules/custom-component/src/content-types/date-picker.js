@@ -31,7 +31,13 @@ module.exports = {
       text: {
         type: 'string',
         title: 'Message'
-      }
+      },
+      displayInKeyboard: {
+        type: 'boolean',
+        title: 'module.builtin.types.dropdown.asKeyboardTitle',
+        description: 'module.builtin.types.dropdown.asKeyboardDesc',
+        default: true
+      },
     }
   },
   uiSchema: {},

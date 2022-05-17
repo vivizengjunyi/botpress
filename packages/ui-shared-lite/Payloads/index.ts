@@ -42,7 +42,9 @@ export const renderPayload = payload => {
 
   if (type === 'single-choice' && payload.choices) {
     return renderChoicePayload(payload)
-  } else if (type === 'dropdown') {
+  } else if (type === 'custom' && payload.component === 'CustomDatePicker'){
+    return renderDatePicker(payload)
+  }else if (type === 'dropdown') {
     return renderDropdownPayload(payload)
   } else if (type === 'image' && payload.image) {
     return renderImagePayload(payload)
@@ -60,7 +62,12 @@ export const renderPayload = payload => {
 
   return payload
 }
-
+const renderDatePicker = (payload) => {
+  return {
+    ...payload,
+    displayInKeyboard: true,
+  }
+}
 const renderChoicePayload = (content: sdk.ChoiceContent & ExtraChoiceProperties) => {
   if (content.isDropdown) {
     return {

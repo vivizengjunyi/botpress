@@ -28,12 +28,25 @@ body {
 }
 
 .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
-  background-color: #000000;
+  background: #0d6efd none repeat scroll 0 0;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 0;
+  color: #fff;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+  padding: 0.5rem;
 }
 
 .bpw-from-bot .bpw-chat-bubble .bpw-chat-bubble-content {
-  background-color: #ffffff;
-  color: #000000;
+  background: #ebebeb none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #646464;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+  padding: 0.5rem;
 }
 
 .bp-emulator-history .bpw-chat-bubble {
@@ -80,13 +93,14 @@ body {
   bottom: 0;
   right: 0;
   height: 100%;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   -webkit-box-orient: vertical;
   -ms-flex-direction: column;
   flex-direction: column;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  border-radius: 5px;
 }
 
 .bpw-layout-fullscreen {
@@ -112,7 +126,7 @@ body {
   min-height: 40px;
   text-align: center;
   border: 1px solid currentColor;
-  border-radius: 0px;
+  border-radius: 5px;
   cursor: pointer;
   margin: 3px 2px;
   text-transform: none;
@@ -669,21 +683,36 @@ body {
 .bpw-send-buttons {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .bpw-send-button {
-  border: none;
-  border-radius: 5px;
-  background: #fff;
-  padding: 5px;
-  font-size: 14px;
-  font-weight: 500;
+  background: #0d6efd none repeat scroll 0 0;
+  border: medium none;
+  border-radius: 50%;
+  color: #fff;
   cursor: pointer;
+  font-size: 10px;
+  height: 33px;
+  position: absolute;
+  right: 0;
+  top: 11px;
+  width: 33px;
+  transform: translate(-10px, 10px);
+}
+
+.bpw-send-button svg {
+  fill:#fff;
 }
 
 .bpw-send-button:hover,
 .bpw-send-button:focus {
-  background: #d8d8d8;
+  background: unset;
+}
+
+.bpw-send-button svg:hover {
+  fill:#0d6efd;
 }
 
 /** HEADER STUFF */
@@ -700,12 +729,20 @@ body {
   align-items: center;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  height: 52px;
+  height: 60px;
   font-weight: 500;
   border-top: solid 1px #ccc;
   border-bottom: 1px solid #ccc;
   padding: 0 1rem;
   overflow: hidden;
+  background-color: #0d6efd;
+  color: white;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.bpw-header-container select {
+  background-color: #0d6efd;
+  color: white;
 }
 
 .bpw-header-title-flexbox {
@@ -741,6 +778,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-size:1rem;
 }
 
 .bpw-header-subtitle {
@@ -798,12 +836,18 @@ body {
   transition: fill 0.3s;
 }
 
+.bpw-header-icon i svg path {
+  fill: #fff;
+}
+
 .bpw-change-language {
   padding: 0;
   margin: 0;
   margin-left: 12px;
   text-align: right;
   vertical-align: middle;
+  border:0px;
+  outline:0px;
 }
 
 .bpw-header-icon svg,

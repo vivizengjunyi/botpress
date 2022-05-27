@@ -163,7 +163,7 @@ class Header extends React.Component<HeaderProps> {
     fr: 'French'
   }
   renderChangeLanguage() {
-    const match = this.props.botId.match(/-([^-]+?)$/)
+    const match = this.props.botId && this.props.botId.match(/-([^-]+?)$/)
     let language = match ? match[1] : 'en'
     if (!this.languages[language]) {
       language = 'en'

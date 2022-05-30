@@ -711,7 +711,8 @@ body {
   background: unset;
 }
 
-.bpw-send-button svg:hover {
+.bpw-send-button:hover svg,
+.bpw-send-button:focus svg {
   fill:#0d6efd;
 }
 
@@ -840,7 +841,7 @@ body {
   fill: #fff;
 }
 
-.bpw-change-language {
+/* .bpw-change-language {
   padding: 0;
   margin: 0;
   margin-left: 12px;
@@ -848,6 +849,10 @@ body {
   vertical-align: middle;
   border:0px;
   outline:0px;
+} */
+
+.bpw-change-language {
+  display: none;
 }
 
 .bpw-header-icon svg,
@@ -1152,4 +1157,9 @@ body {
 }
 .bpw-powered {
   display: none;
+}
+
+.bpw-bubble-session_reset .Linkify {
+  color: #000;
+  margin: 0.5rem 0;
 }

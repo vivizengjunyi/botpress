@@ -80,6 +80,7 @@ export namespace Renderer {
     escapeHTML: boolean
     allowCreation?: boolean
     placeholderText?: string
+    api?: string
     allowMultiple?: boolean
     width?: number
     markdown: boolean

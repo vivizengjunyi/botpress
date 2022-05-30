@@ -15,6 +15,7 @@ interface ExtraDropdownProperties {
   width: number
   collectFeedback: boolean
   placeholderText: string
+  api: string
   markdown: boolean
 }
 
@@ -112,6 +113,7 @@ const renderDropdownPayload = (content: sdk.DropdownContent & ExtraDropdownPrope
     width: content.width,
     collectFeedback: content.collectFeedback,
     placeholderText: content.placeholderText,
+    api: content.api,
     markdown: content.markdown
   }
 }

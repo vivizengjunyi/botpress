@@ -11,22 +11,7 @@ export const Dropdown = (props: Renderer.Dropdown) => {
   const [selectedOption, setSelectedOption] = useState<any>()
 
   useEffect(() => {
-    if (props.api){
-      if(props.api === 'getCountries'){
-        // use axio to request https://restcountries.com/v3.1/all
-        axios.get('https://restcountries.com/v3.1/all').then(res => {
-          const options = res.data.map(country => {
-            return {
-              value: country.name.common,
-              label: country.name.common
-            }
-          })
-          setOptions(options)
-        }).catch(err => {
-          // handle error
-        })
-      }
-    }else if (props.options) {
+    if (props.options){
       setOptions(props.options.map(x => ({ value: x.value || x.label, label: x.label })))
     }
   }, [])

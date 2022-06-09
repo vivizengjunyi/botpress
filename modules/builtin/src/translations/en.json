@@ -69,7 +69,6 @@
       "asKeyboardTitle": "Display as keyboard",
       "buttonDesc": "When left blank, the selected option is sent when the dropdown is closed",
       "buttonText": "The text to display on the button.",
-      "api": "Api(provide options via api)",
       "desc": "Displays a list of options to the user",
       "itemLabel": "The text displayed in the dropdown menu",
       "itemValue": "The value that the bot will receive (optional)",

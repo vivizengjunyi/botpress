@@ -30,11 +30,6 @@ module.exports = {
         title: 'module.builtin.types.dropdown.placeholderText',
         default: 'Select a choice'
       },
-      api: {
-        type: 'string',
-        title: 'module.builtin.types.dropdown.api',
-        default: ''
-      },
       options: {
         type: 'array',
         title: 'module.builtin.types.dropdown.optionsList',

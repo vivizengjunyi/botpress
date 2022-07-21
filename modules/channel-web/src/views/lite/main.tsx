@@ -67,6 +67,9 @@ class Web extends React.Component<MainProps> {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       this.initializeIfChatDisplayed()
     }
+    if(this.props.isInitialized){
+      this.postMessageToParent('isConversationStarted', this.props.isConversationStarted)
+    }
   }
 
   async initializeIfChatDisplayed() {
@@ -409,7 +412,9 @@ export default inject(({ store }: { store: RootStore }) => ({
   sendFeedback: store.sendFeedback,
   setCustomUserId: store.setCustomUserId,
   resetConversation: store.resetConversation,
-  createConversation: store.createConversation
+  createConversation: store.createConversation,
+  isConversationStarted: store.isConversationStarted,
+  isInitialized: store.isInitialized,
 }))(injectIntl(observer(Web)))
 
 type MainProps = { store: RootStore } & Pick<
@@ -448,4 +453,6 @@ type MainProps = { store: RootStore } & Pick<
   | 'setCustomUserId'
   | 'resetConversation'
   | 'createConversation'
+  | 'isConversationStarted'
+  | 'isInitialized'
 >
